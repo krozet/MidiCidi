@@ -34,6 +34,7 @@ public:
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
+
     MidiCidiAudioProcessor& processor;
 	AudioDeviceManager deviceManager;        
 	ComboBox midiInputList;                  
@@ -48,11 +49,33 @@ private:
 	double startTime;
 
 	void setMidiInput(int index);
+	void logMessage(const String& m);
+	void postMessageToList(const MidiMessage& message, const String& source);
+	void addMessageToList(const MidiMessage& message, const String& source);
+	static String getMidiMessageDescription(const MidiMessage& m);
+
 	void comboBoxChanged(ComboBox* box) override;
 	void handleIncomingMidiMessage(MidiInput* source, const MidiMessage& message) override;
 	void handleNoteOn(MidiKeyboardState*, int midiChannel, int midiNoteNumber, float velocity) override;
 	void handleNoteOff(MidiKeyboardState*, int midiChannel, int midiNoteNumber, float velocity) override;
 
+	class IncomingMessageCallback : public CallbackMessage
+	{
+	public:
+		IncomingMessageCallback(MidiCidiAudioProcessorEditor* o, const MidiMessage& m, const String& s)
+			: owner(o), message(m), source(s)
+		{}
+
+		void messageCallback() override
+		{
+			if (owner != nullptr)
+				owner->addMessageToList(message, source);
+		}
+
+		Component::SafePointer<MidiCidiAudioProcessorEditor> owner;
+		MidiMessage message;
+		String source;
+	};
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MidiCidiAudioProcessorEditor)
 };

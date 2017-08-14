@@ -1,11 +1,7 @@
-
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-
-///forward declarations
-enum Tonic : int;
-enum Mode : int;
+#include "ScaleEnums.h"
 
 /**
 Responsible for constructing the scale/mode based on the user's settings
@@ -14,11 +10,8 @@ It will take in the midi note, and output the appropriate note to achieve the us
 class Scales
 {
 public:
-	Scales(Tonic t, Mode m);
+	Scales(ScaleEnums::Tonic t, ScaleEnums::Mode m);
 	~Scales();
-
-	const enum Tonic { C, Db, D, Eb, E, F, Gb, G, Ab, A, Bb, B };
-	const enum Mode {MAJOR, MINOR, IONIAN, DORIAN, PHRYGIAN, LYDIAN, MIXOLYDIAN, AEOLIAN, LOCRIAN};
 
 	int getModifiedMidiNote(int note);
 

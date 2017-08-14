@@ -1,8 +1,6 @@
 #include "Scales.h"
-#include "PluginProcessor.h"
-#include "PluginEditor.h"
 
-Scales::Scales(Tonic t, Mode m) : userTonic(t), userMode(m)
+Scales::Scales(ScaleEnums::Tonic t, ScaleEnums::Mode m) : userTonic(t), userMode(m)
 {
 	setDisplacement();
 }

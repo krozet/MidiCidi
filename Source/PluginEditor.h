@@ -35,6 +35,10 @@ private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
 
+	ComboBox tonicList;
+	Label tonicListLabel;
+	String tonics[12] = { "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"};
+
     MidiCidiAudioProcessor& processor;
 	AudioDeviceManager deviceManager;        
 	ComboBox midiInputList;                  
@@ -51,6 +55,7 @@ private:
 	void midiMessageBoxVisibility();
 	void midiInputListVisibility();
 	void midiKeyboardVisibility();
+	void tonicListVisibility();
 
 	void setMidiInput(int index);
 	void logMessage(const String& m);

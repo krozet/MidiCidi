@@ -28,6 +28,7 @@ MidiCidiAudioProcessorEditor::MidiCidiAudioProcessorEditor (MidiCidiAudioProcess
 	midiInputListVisibility();
 	midiKeyboardVisibility();
 	midiMessageBoxVisibility();
+	tonicListVisibility();
 
 	setSize(600, 400);
 }
@@ -53,6 +54,7 @@ void MidiCidiAudioProcessorEditor::resized()
     // subcomponents in your editor..
 	Rectangle<int> area(getLocalBounds());
 	midiInputList.setBounds(area.removeFromTop(36).removeFromRight(getWidth() - 150).reduced(8));
+	tonicList.setBounds(area.removeFromTop(36).removeFromRight(getWidth() - 500).reduced(8));
 	keyboardComponent.setBounds(area.removeFromTop(80).reduced(8));
 	midiMessagesBox.setBounds(area.reduced(8));
 }
@@ -102,6 +104,20 @@ void MidiCidiAudioProcessorEditor::midiKeyboardVisibility()
 {
 	addAndMakeVisible(keyboardComponent);
 	keyboardState.addListener(this);
+}
+
+void MidiCidiAudioProcessorEditor::tonicListVisibility()
+{
+	addAndMakeVisible(tonicListLabel);
+	tonicListLabel.setText("Select the Tonic note:", dontSendNotification);
+	tonicListLabel.attachToComponent(&tonicList, true);
+
+	for (int i = 0; i < 12; i++)
+	{
+		tonicList.addItem(tonics[i], i+1);
+	}
+	addAndMakeVisible(tonicList);
+	tonicList.addListener(this);
 }
 
 void MidiCidiAudioProcessorEditor::setMidiInput(int index)

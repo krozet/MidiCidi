@@ -48,6 +48,10 @@ private:
 	TextEditor midiMessagesBox;
 	double startTime;
 
+	void midiMessageBoxVisibility();
+	void midiInputListVisibility();
+	void midiKeyboardVisibility();
+
 	void setMidiInput(int index);
 	void logMessage(const String& m);
 	void postMessageToList(const MidiMessage& message, const String& source);

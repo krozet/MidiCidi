@@ -1,6 +1,15 @@
 #include "Scales.h"
 
-Scales::Scales(ScaleEnums::Tonic t, ScaleEnums::Mode m) : userTonic(t), userMode(m)
+Scales::Scales() : userTonic(Tonic::C), userMode(Mode::MAJOR)
+{
+	setDisplacement();
+}
+
+Scales::~Scales()
+{
+}
+
+Scales::Scales(int t, int m) : userTonic(t), userMode(m)
 {
 	setDisplacement();
 }
@@ -9,7 +18,7 @@ int Scales::getModifiedMidiNote(int note)
 {
 	octaveDegree = note % 12;
 
-	return (displacement + modes[userMode][octaveDegree]);
+	return (note + displacement + modes[userMode][octaveDegree]);
 }
 
 void Scales::setDisplacement()

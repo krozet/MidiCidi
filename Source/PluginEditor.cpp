@@ -10,7 +10,6 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
-#include "Scales.h"
 #include <string>
 
 
@@ -29,6 +28,7 @@ MidiCidiAudioProcessorEditor::MidiCidiAudioProcessorEditor (MidiCidiAudioProcess
 	midiKeyboardVisibility();
 	midiMessageBoxVisibility();
 	tonicListVisibility();
+	modeListVisibility();
 
 	setSize(600, 400);
 }
@@ -54,9 +54,12 @@ void MidiCidiAudioProcessorEditor::resized()
     // subcomponents in your editor..
 	Rectangle<int> area(getLocalBounds());
 	midiInputList.setBounds(area.removeFromTop(36).removeFromRight(getWidth() - 150).reduced(8));
-	tonicList.setBounds(area.removeFromTop(36).removeFromRight(getWidth() - 500).reduced(8));
+	modeList.setBounds(area.removeFromTop(36).removeFromRight(getWidth() - 450).reduced(8));
 	keyboardComponent.setBounds(area.removeFromTop(80).reduced(8));
 	midiMessagesBox.setBounds(area.reduced(8));
+
+	Rectangle<int> tonicBox(250, 43, 65, 20);
+	tonicList.setBounds(tonicBox);
 }
 
 void MidiCidiAudioProcessorEditor::midiMessageBoxVisibility()
@@ -112,12 +115,43 @@ void MidiCidiAudioProcessorEditor::tonicListVisibility()
 	tonicListLabel.setText("Select the Tonic note:", dontSendNotification);
 	tonicListLabel.attachToComponent(&tonicList, true);
 
+	//Combo box starts id at 1, not 0
 	for (int i = 0; i < 12; i++)
 	{
 		tonicList.addItem(tonics[i], i+1);
 	}
 	addAndMakeVisible(tonicList);
+	tonicList.setSelectedItemIndex(0, dontSendNotification);
 	tonicList.addListener(this);
+}
+
+void MidiCidiAudioProcessorEditor::modeListVisibility()
+{
+	addAndMakeVisible(modeListLabel);
+	modeListLabel.setText("Select the Mode:", dontSendNotification);
+	modeListLabel.attachToComponent(&modeList, true);
+
+	//Combo box starts id at 1, not 0
+	for (int i = 0; i < 9; i++)
+	{
+		if (i == 2)
+			modeList.addSeparator();
+		modeList.addItem(modes[i], i + 1);
+	}
+	addAndMakeVisible(modeList);
+	modeList.setSelectedItemIndex(0, dontSendNotification);
+	modeList.addListener(this);
+}
+
+void MidiCidiAudioProcessorEditor::addDataToList(StringArray str)
+{
+	logMessage(str.joinIntoString("\n", 0, -1));
+}
+
+void MidiCidiAudioProcessorEditor::adjustMessageNoteValue(MidiMessage & message)
+{
+	Scales gmaj(6, 4);
+	message.setNoteNumber(gmaj.getModifiedMidiNote(message.getNoteNumber()));
 }
 
 void MidiCidiAudioProcessorEditor::setMidiInput(int index)
@@ -139,6 +173,7 @@ void MidiCidiAudioProcessorEditor::setMidiInput(int index)
 
 void MidiCidiAudioProcessorEditor::logMessage(const String & m)
 {
+	
 	midiMessagesBox.moveCaretToEnd();
 	midiMessagesBox.insertTextAtCaret(m + newLine);
 }

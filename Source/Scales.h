@@ -1,20 +1,26 @@
+#ifndef SCALES_H
+#define SCALES_H
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "ScaleEnums.h"
 
 /**
 Responsible for constructing the scale/mode based on the user's settings
 It will take in the midi note, and output the appropriate note to achieve the user's settings
 */
+
 class Scales
 {
 public:
-	Scales(ScaleEnums::Tonic t, ScaleEnums::Mode m);
+	Scales();
+	Scales(int t, int m);
 	~Scales();
 
 	int getModifiedMidiNote(int note);
 
+	const enum Tonic { C = 0, Db, D, Eb, E, F, Gb, G, Ab, A, Bb, B };
+	const enum Mode { MAJOR = 0, MINOR, IONIAN, DORIAN, PHRYGIAN, LYDIAN, MIXOLYDIAN, AEOLIAN, LOCRIAN };
+	
 private:
 	int userTonic;
 	int userMode;
@@ -39,3 +45,5 @@ private:
 
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Scales)
 };
+
+#endif

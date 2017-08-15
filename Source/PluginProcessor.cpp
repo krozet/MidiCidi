@@ -10,8 +10,7 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
-#include "Scales.h"
-
+#include <string>
 
 //==============================================================================
 MidiCidiAudioProcessor::MidiCidiAudioProcessor()
@@ -129,31 +128,6 @@ void MidiCidiAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer
 
 	buffer.clear();
 
-	MidiBuffer processedMidi;
-	int time;
-	MidiMessage m;
-
-	for (MidiBuffer::Iterator i(midiMessages); i.getNextEvent(m, time);)
-	{
-		if (m.isNoteOn())
-		{
-			//m = MidiMessage::noteOn(m.getChannel(), m.getNoteNumber(), newVel);
-		}
-		else if (m.isNoteOff())
-		{
-		}
-		else if (m.isAftertouch())
-		{
-		}
-		else if (m.isPitchWheel())
-		{
-		}
-
-		processedMidi.addEvent(m, time);
-	}
-
-	midiMessages.swapWith(processedMidi);
-
     // This is the place where you'd normally do the guts of your plugin's
     // audio processing...
 
@@ -189,7 +163,6 @@ void MidiCidiAudioProcessor::setStateInformation (const void* data, int sizeInBy
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
 }
-
 
 //==============================================================================
 // This creates new instances of the plugin..

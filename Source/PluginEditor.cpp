@@ -150,8 +150,28 @@ void MidiCidiAudioProcessorEditor::addDataToList(StringArray str)
 
 void MidiCidiAudioProcessorEditor::adjustMessageNoteValue(MidiMessage & message)
 {
+	//user = &createUserMode();
+	//if (tonicID < 0 || tonicID >12)
+		//tonicID = 1;
 	Scales gmaj(6, 4);
-	message.setNoteNumber(gmaj.getModifiedMidiNote(message.getNoteNumber()));
+	/*if (user == nullptr)
+	{
+		message.setNoteNumber(0);
+	}
+	else {*/
+		int noteNumber = gmaj.getModifiedMidiNote(message.getNoteNumber());
+		if (noteNumber >= 10 && noteNumber <= 120) {
+			message.setNoteNumber(noteNumber);
+		}
+		else {
+			message.setNoteNumber(0);
+		}
+	//}
+}
+
+Scales& MidiCidiAudioProcessorEditor::createUserMode()
+{
+	return Scales(tonicIndex, modeIndex);
 }
 
 void MidiCidiAudioProcessorEditor::setMidiInput(int index)
@@ -235,6 +255,23 @@ void MidiCidiAudioProcessorEditor::comboBoxChanged(ComboBox * box)
 {
 	if (box == &midiInputList)
 		setMidiInput(midiInputList.getSelectedItemIndex());
+
+	if (box == &tonicList)
+	{
+		tonicIndex = tonicList.getSelectedItemIndex();
+		if (tonicIndex < 0 || tonicIndex > 12) 
+			tonicIndex = 0;
+
+		processor.userScale.setUserTonic(tonicIndex);
+	}
+
+	if (box == &modeList)
+	{
+		modeIndex = modeList.getSelectedItemIndex();
+		if (modeIndex < 0 || modeIndex > 9)
+			modeIndex = 0;
+		processor.userScale.setUserMode(modeIndex);
+	}
 }
 
 void MidiCidiAudioProcessorEditor::handleIncomingMidiMessage(MidiInput * source, const MidiMessage & message)

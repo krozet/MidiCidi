@@ -30,3 +30,13 @@ void Scales::setDisplacement()
 		displacement = userTonic - 12;
 	}
 }
+
+void Scales::setUserTonic(int t)
+{
+	userTonic = t;
+}
+
+void Scales::setUserMode(int m)
+{
+	userMode = m;
+}

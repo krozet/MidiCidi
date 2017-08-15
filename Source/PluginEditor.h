@@ -14,7 +14,6 @@
 #include "PluginProcessor.h"
 #include "Scales.h"
 
-
 //==============================================================================
 /**
 */
@@ -63,8 +62,11 @@ private:
 	String modes[9] = { "Major", "Minor", "Ionian", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Aeolian", "Locrian" };
 
 	void addDataToList(StringArray str);
-
-	void adjustMessageNoteValue(MidiMessage& message);
+	int tonicIndex;
+	int modeIndex;
+	void adjustMessageNoteValue(MidiMessage& message); //take a look at this, remove all instances of this shit
+	Scales user;
+	Scales &createUserMode();
 
 	void setMidiInput(int index);
 	void logMessage(const String& m);

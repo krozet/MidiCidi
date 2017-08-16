@@ -19,6 +19,9 @@ public:
 	void setUserTonic(int t);
 	void setUserMode(int m);
 
+	int getUserTonic();
+	int getUserMode();
+
 	int getModifiedMidiNote(int note);
 
 	const enum Tonic { C = 0, Db, D, Eb, E, F, Gb, G, Ab, A, Bb, B };

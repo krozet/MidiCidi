@@ -14,6 +14,16 @@ Scales::Scales(int t, int m) : userTonic(t), userMode(m)
 	setDisplacement();
 }
 
+int Scales::getUserTonic()
+{
+	return userTonic;
+}
+
+int Scales::getUserMode()
+{
+	return userMode;
+}
+
 int Scales::getModifiedMidiNote(int note)
 {
 	octaveDegree = note % 12;

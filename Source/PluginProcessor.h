@@ -56,7 +56,14 @@ public:
 	void getStateInformation(MemoryBlock& destData) override;
 	void setStateInformation(const void* data, int sizeInBytes) override;
 
+	int oldNote;
+	int newNote;
+
+	uint8 newVel;
+
 	Scales userScale;
+
+	String yuungBitchGotANoteString = "YUUNG BITCH GONNA TELL YOU WHAT NOTES";
 private:
 	//==============================================================================
 

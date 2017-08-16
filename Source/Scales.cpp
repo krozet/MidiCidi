@@ -34,6 +34,7 @@ void Scales::setDisplacement()
 void Scales::setUserTonic(int t)
 {
 	userTonic = t;
+	setDisplacement();
 }
 
 void Scales::setUserMode(int m)

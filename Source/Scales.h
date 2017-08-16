@@ -27,7 +27,6 @@ public:
 private:
 	int userTonic;
 	int userMode;
-
 	int octaveDegree;
 	int displacement;
 

@@ -56,6 +56,9 @@ public:
 	void getStateInformation(MemoryBlock& destData) override;
 	void setStateInformation(const void* data, int sizeInBytes) override;
 
+	int modeIndex = 0;
+	int tonicIndex = 0;
+
 	int oldNote;
 	int newNote;
 

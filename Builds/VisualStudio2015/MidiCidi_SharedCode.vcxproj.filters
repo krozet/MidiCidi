@@ -387,6 +387,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Scales.cpp">
+      <Filter>MidiCidi\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\images.cpp">
+      <Filter>MidiCidi\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">
       <Filter>MidiCidi\Source</Filter>
     </ClCompile>
@@ -2103,11 +2109,14 @@
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_video.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Scales.cpp">
-      <Filter>MidiCidi\Source</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Scales.h">
+      <Filter>MidiCidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\images.h">
+      <Filter>MidiCidi\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\PluginProcessor.h">
       <Filter>MidiCidi\Source</Filter>
     </ClInclude>
@@ -4063,9 +4072,6 @@
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
       <Filter>Juce Library Code</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Scales.h">
-      <Filter>MidiCidi\Source</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

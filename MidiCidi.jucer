@@ -12,6 +12,10 @@
               pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="5.0.2">
   <MAINGROUP id="BiwZJF" name="MidiCidi">
     <GROUP id="{FFBA9353-5C48-9737-AE41-F6B76639FDD5}" name="Source">
+      <FILE id="BmbW95" name="Scales.cpp" compile="1" resource="0" file="Source/Scales.cpp"/>
+      <FILE id="oaf8yz" name="Scales.h" compile="0" resource="0" file="Source/Scales.h"/>
+      <FILE id="Xn0cik" name="images.cpp" compile="1" resource="0" file="Source/images.cpp"/>
+      <FILE id="No4fBj" name="images.h" compile="0" resource="0" file="Source/images.h"/>
       <FILE id="bx8YXY" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="rHgurC" name="PluginProcessor.h" compile="0" resource="0"

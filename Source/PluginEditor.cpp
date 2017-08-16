@@ -6,12 +6,15 @@ MidiCidiAudioProcessorEditor::MidiCidiAudioProcessorEditor (MidiCidiAudioProcess
     : AudioProcessorEditor (&p),
 		processor (p)
 {
+	keyboard = ImageCache::getFromMemory(images::keyboard_png, images::keyboard_pngSize);
+
 	setOpaque(true);
 
 	tonicListVisibility();
 	modeListVisibility();
+	keysVisibility();
 
-	setSize(600, 400);
+	setSize(600, 300);
 }
 
 MidiCidiAudioProcessorEditor::~MidiCidiAudioProcessorEditor()
@@ -22,10 +25,10 @@ void MidiCidiAudioProcessorEditor::paint (Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
     g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
+	g.drawImage(keyboard, 50, 100, 500, 200, 0, 0, 2000, 1491);
 
     g.setColour (Colours::white);
     g.setFont (15.0f);
-    g.drawFittedText ("Suck all seven of my dicks", getLocalBounds(), Justification::centred, 1);
 }
 
 void MidiCidiAudioProcessorEditor::resized()
@@ -69,6 +72,17 @@ void MidiCidiAudioProcessorEditor::modeListVisibility()
 	addAndMakeVisible(modeList);
 	modeList.setSelectedItemIndex(0, dontSendNotification);
 	modeList.addListener(this);
+}
+
+void MidiCidiAudioProcessorEditor::keysVisibility()
+{
+	addAndMakeVisible(cKey);
+	addAndMakeVisible(dKey);
+	addAndMakeVisible(eKey);
+	addAndMakeVisible(fKey);
+	addAndMakeVisible(gKey);
+	addAndMakeVisible(aKey);
+	addAndMakeVisible(bKey);
 }
 
 void MidiCidiAudioProcessorEditor::comboBoxChanged(ComboBox * box)

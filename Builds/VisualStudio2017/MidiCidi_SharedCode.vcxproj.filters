@@ -388,6 +388,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Scales.cpp">
+      <Filter>MidiCidi\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\images.cpp">
+      <Filter>MidiCidi\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">
       <Filter>MidiCidi\Source</Filter>
     </ClCompile>
@@ -2235,6 +2241,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Scales.h">
+      <Filter>MidiCidi\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\images.h">
+      <Filter>MidiCidi\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\PluginProcessor.h">
       <Filter>MidiCidi\Source</Filter>
     </ClInclude>

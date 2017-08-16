@@ -6,7 +6,7 @@
 
 /**
 Responsible for constructing the scale/mode based on the user's settings
-It will take in the midi note, and output the appropriate note to achieve the user's settings
+It will take in the midi note number, and output the appropriate note number to achieve the user's settings
 */
 
 class Scales

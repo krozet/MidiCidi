@@ -3,6 +3,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "PluginProcessor.h"
 #include "Scales.h"
+#include "images.h"
 
 class MidiCidiAudioProcessorEditor : public AudioProcessorEditor,
 									private ComboBox::Listener
@@ -17,15 +18,27 @@ public:
 
 private:
 	MidiCidiAudioProcessor& processor;
+
+	Image keyboard;
+	TextEditor cKey;
+	TextEditor dKey;
+	TextEditor eKey;
+	TextEditor fKey;
+	TextEditor gKey;
+	TextEditor aKey;
+	TextEditor bKey;
+
 	ComboBox modeList;
 	ComboBox tonicList;
 	Label modeListLabel;
 	Label tonicListLabel;
+
 	int modeIndex;
 	int tonicIndex;
 
 	void tonicListVisibility();
 	void modeListVisibility();
+	void keysVisibility();
 
 	void comboBoxChanged(ComboBox* box) override;
 

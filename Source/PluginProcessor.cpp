@@ -123,20 +123,58 @@ bool MidiCidiAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts)
 
 void MidiCidiAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
-    const int totalNumInputChannels  = getTotalNumInputChannels();
-    const int totalNumOutputChannels = getTotalNumOutputChannels();
-
 	buffer.clear();
 
-    // This is the place where you'd normally do the guts of your plugin's
-    // audio processing...
+	MidiBuffer processedMidi;
+	int time;
+	MidiMessage m;
+	//MidiMessage m2;
+	//MidiMessage m3;
 
-    for (int channel = 0; channel < totalNumInputChannels; ++channel)
-    {
-        float* channelData = buffer.getWritePointer (channel);
+	for (MidiBuffer::Iterator i(midiMessages); i.getNextEvent(m, time);)
+	{
+		if (m.isNoteOn())
+		{
+			
+			newNote = userScale.getModifiedMidiNote(oldNote = m.getNoteNumber());
+			if (newNote < 0 || newNote > 127)
+			{
+				newVel = (uint8)0;
+			}
 
-        // ..do something to the data...
-    }
+			else
+			{
+				newVel = m.getVelocity();
+			}
+
+			m = MidiMessage::noteOn(m.getChannel(), newNote, newVel);
+
+			yuungBitchGotANoteString = "Input Note: " + MidiMessage::getMidiNoteName(oldNote, false, true, 4) + " Note Being Played: " + MidiMessage::getMidiNoteName(newNote, false, true, 4);
+			//m2 = MidiMessage::noteOn(m.getChannel(), m.getNoteNumber() + 2, newVel);
+			//m3 = MidiMessage::noteOn(m.getChannel(), m.getNoteNumber() + 4, newVel);
+		}
+		else if (m.isNoteOff())
+		{
+			newNote = userScale.getModifiedMidiNote(oldNote = m.getNoteNumber());
+
+			m = MidiMessage::noteOff(m.getChannel(), newNote, (uint8)0);
+
+			//m2 = MidiMessage::noteOff(m.getChannel(), m.getNoteNumber() + 2, (uint8)0);
+			//m3 = MidiMessage::noteOff(m.getChannel(), m.getNoteNumber() + 4, (uint8)0);
+		}
+		else if (m.isAftertouch())
+		{
+		}
+		else if (m.isPitchWheel())
+		{
+		}
+
+		processedMidi.addEvent(m, time);
+		//processedMidi.addEvent(m2, time+1);
+		//processedMidi.addEvent(m3, time+2);
+	}
+
+	midiMessages.swapWith(processedMidi);
 }
 
 //==============================================================================

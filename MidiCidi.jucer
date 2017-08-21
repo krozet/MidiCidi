@@ -3,7 +3,7 @@
 <JUCERPROJECT id="T0z6ff" name="MidiCidi" displaySplashScreen="1" reportAppUsage="1"
               splashScreenColour="Dark" projectType="audioplug" version="1.0.0"
               bundleIdentifier="com.yourcompany.MidiCidi" includeBinaryInAppConfig="1"
-              buildVST="1" buildVST3="1" buildAU="1" buildAUv3="0" buildRTAS="0"
+              buildVST="1" buildVST3="0" buildAU="1" buildAUv3="0" buildRTAS="0"
               buildAAX="0" buildStandalone="0" enableIAA="0" pluginName="MidiCidi"
               pluginDesc="MidiCidi" pluginManufacturer="yourcompany" pluginManufacturerCode="Manu"
               pluginCode="T0z6" pluginChannelConfigs="" pluginIsSynth="1" pluginWantsMidiIn="1"

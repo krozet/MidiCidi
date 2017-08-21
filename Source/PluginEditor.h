@@ -21,6 +21,8 @@ private:
 	MidiCidiAudioProcessor& processor;
 
 	Image keyboard;
+	Image background;
+
 	std::vector<int> userScale;
 	Font keys;
 	Label cKey;
@@ -35,6 +37,12 @@ private:
 	ComboBox tonicList;
 	Label modeListLabel;
 	Label tonicListLabel;
+
+	Colour comboBoxColor;
+	Colour comboBoxTextColor;
+	Colour comboBoxArrowColor;
+	Colour labelTextColor;
+	Colour pianoKeysColor;
 
 	int modeIndex;
 	int tonicIndex;

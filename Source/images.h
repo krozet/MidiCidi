@@ -53,6 +53,8 @@ public:
     // Binary resources:
     static const char* keyboard_png;
     static const int keyboard_pngSize;
+    static const char* landonBackgroundthing_png;
+    static const int landonBackgroundthing_pngSize;
 
 
 private:
@@ -66,6 +68,6 @@ private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (images)
 };
 
-#endif // !IMAGES_H
 //[EndFile] You can add extra defines here...
 //[/EndFile]
+#endif

@@ -128,8 +128,6 @@ void MidiCidiAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer
 	MidiBuffer processedMidi;
 	int time;
 	MidiMessage m;
-	//MidiMessage m2;
-	//MidiMessage m3;
 
 	for (MidiBuffer::Iterator i(midiMessages); i.getNextEvent(m, time);)
 	{
@@ -149,18 +147,13 @@ void MidiCidiAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer
 
 			m = MidiMessage::noteOn(m.getChannel(), newNote, newVel);
 
-			yuungBitchGotANoteString = "Input Note: " + MidiMessage::getMidiNoteName(oldNote, false, true, 4) + " Note Being Played: " + MidiMessage::getMidiNoteName(newNote, false, true, 4);
-			//m2 = MidiMessage::noteOn(m.getChannel(), m.getNoteNumber() + 2, newVel);
-			//m3 = MidiMessage::noteOn(m.getChannel(), m.getNoteNumber() + 4, newVel);
+			noteString = "Input Note: " + MidiMessage::getMidiNoteName(oldNote, false, true, 4) + " Note Being Played: " + MidiMessage::getMidiNoteName(newNote, false, true, 4);
 		}
 		else if (m.isNoteOff())
 		{
 			newNote = userScale.getModifiedMidiNote(oldNote = m.getNoteNumber());
 
 			m = MidiMessage::noteOff(m.getChannel(), newNote, (uint8)0);
-
-			//m2 = MidiMessage::noteOff(m.getChannel(), m.getNoteNumber() + 2, (uint8)0);
-			//m3 = MidiMessage::noteOff(m.getChannel(), m.getNoteNumber() + 4, (uint8)0);
 		}
 		else if (m.isAftertouch())
 		{
@@ -170,8 +163,6 @@ void MidiCidiAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer
 		}
 
 		processedMidi.addEvent(m, time);
-		//processedMidi.addEvent(m2, time+1);
-		//processedMidi.addEvent(m3, time+2);
 	}
 
 	midiMessages.swapWith(processedMidi);
@@ -191,15 +182,10 @@ AudioProcessorEditor* MidiCidiAudioProcessor::createEditor()
 //==============================================================================
 void MidiCidiAudioProcessor::getStateInformation (MemoryBlock& destData)
 {
-    // You should use this method to store your parameters in the memory block.
-    // You could do that either as raw data, or use the XML or ValueTree classes
-    // as intermediaries to make it easy to save and load complex data.
 }
 
 void MidiCidiAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
-    // You should use this method to restore your parameters from this memory block,
-    // whose contents will have been created by the getStateInformation() call.
 }
 
 //==============================================================================

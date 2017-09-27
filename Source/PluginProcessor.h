@@ -66,7 +66,7 @@ public:
 
 	Scales userScale;
 
-	String yuungBitchGotANoteString = "YUUNG BITCH GONNA TELL YOU WHAT NOTES";
+	String noteString;
 private:
 	//==============================================================================
 

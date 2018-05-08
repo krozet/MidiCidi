@@ -4,4 +4,4 @@ This software is a VST MIDI plugin for Ableton (the industry standard Digital Au
 
 This is an entirely free piece of software that I developed alongside with Bradly Foster, a fellow aspiring Software Engineer and lifelong friend. We aimed to fuse two of our greatest passions in our life into one project - programming and music. Coded entirely in C++, MidiCidi demonstrates I/O operations, an interactive GUI, and precise processing of collected data.
 
-![alt text](midicidiGUI.png)
+![alt text](https://github.com/krozet/MidiCidi/blob/master/midicidiGUI.PNG)

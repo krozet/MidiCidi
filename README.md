@@ -4,14 +4,13 @@ This software is a VST MIDI plugin for Ableton (the industry standard Digital Au
 
 This is an entirely free piece of software that I developed alongside with Bradly Foster, a fellow aspiring Software Engineer and lifelong friend. We aimed to fuse two of our greatest passions in our life into one project - programming and music. Coded entirely in C++, MidiCidi demonstrates I/O operations, an interactive GUI, and precise processing of collected data.  
 
+
+![alt text](https://github.com/krozet/MidiCidi/blob/master/midicidiGUI.PNG)  
+
 # How to Use
 
 Download the correct MidiCidi version based on what architecture of Ableton you are running and then add the .dll file to your custom plugins folder.  
 
 MidiCidi's setup is very similar to how Cthulhu is setup, so we recommend watching this quick guide but substiting in MidiCidi in Cthulhu's place.  
 
-![alt text](https://img.youtube.com/vi/o31Z4yOh7m0/0.jpg)(https://www.youtube.com/watch?v=o31Z4yOh7m0)  
-
-
-
-![alt text](https://github.com/krozet/MidiCidi/blob/master/midicidiGUI.PNG)
+[![Quick Setup Cthulhu in Ableton](https://img.youtube.com/vi/o31Z4yOh7m0/0.jpg)](https://www.youtube.com/watch?v=o31Z4yOh7m0)  

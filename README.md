@@ -9,8 +9,8 @@ This is an entirely free piece of software that I developed alongside with Brad 
 
 # How to Use
 
-Download the correct MidiCidi version based on what architecture of Ableton you are running and then add the .dll file to your custom plugins folder.  
+Download the correct MidiCidi version based on what architecture of Ableton you are running and then add the .dll file to your custom plug-ins folder.  
 
-MidiCidi's setup is very similar to how Cthulhu is setup, so we recommend watching this quick guide but substiting in MidiCidi in Cthulhu's place.  
+MidiCidi's setup is very similar to how Cthulhu is setup, so we recommend watching this quick guide but substituting in MidiCidi in Cthulhu's place.  
 
 [![Quick Setup Cthulhu in Ableton](https://img.youtube.com/vi/o31Z4yOh7m0/0.jpg)](https://www.youtube.com/watch?v=o31Z4yOh7m0)  
